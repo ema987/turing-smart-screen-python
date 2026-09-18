@@ -1,0 +1,822 @@
+display:
+  DISPLAY_ORIENTATION: landscape
+  DISPLAY_SIZE: 8.8"
+  DISPLAY_REVERSE: false
+static_images:
+  BACKGROUND:
+    PATH: background.png
+    X: 0
+    Y: 0
+    WIDTH: 1920
+    HEIGHT: 480
+static_text:
+  FanCpuData_LBL:
+    TEXT: CPU FAN
+    X: 1500
+    Y: 80
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  FanPumpData_LBL:
+    TEXT: PUMP FAN
+    X: 1500
+    Y: 108
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  FanSys1Data_LBL:
+    TEXT: SYS1 FAN
+    X: 1500
+    Y: 136
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  FanSys2Data_LBL:
+    TEXT: SYS2 FAN
+    X: 1500
+    Y: 164
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  FanSys3Data_LBL:
+    TEXT: SYS3 FAN
+    X: 1500
+    Y: 192
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  FanSys6Data_LBL:
+    TEXT: SYS6 FAN
+    X: 1500
+    Y: 220
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  SysTempData_LBL:
+    TEXT: SYS TEMP
+    X: 1500
+    Y: 248
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  VrmTempData_LBL:
+    TEXT: VRM TEMP
+    X: 1500
+    Y: 276
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  Ram1Data_LBL:
+    TEXT: RAM1 TEMP
+    X: 1500
+    Y: 304
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  Ram2Data_LBL:
+    TEXT: RAM2 TEMP
+    X: 1500
+    Y: 332
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  Nvme1Data_LBL:
+    TEXT: NVME1 TEMP
+    X: 1500
+    Y: 360
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  Nvme2Data_LBL:
+    TEXT: NVME2 TEMP
+    X: 1500
+    Y: 388
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  Nvme3Data_LBL:
+    TEXT: NVME3 TEMP
+    X: 1500
+    Y: 416
+    FONT_SIZE: 20
+    FONT_COLOR: 255,170,0
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  NET_UP_LBL:
+    TEXT: UPLOAD
+    X: 1300
+    Y: 220
+    FONT_SIZE: 20
+    FONT_COLOR: 255,0,255
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+  NET_DN_LBL:
+    TEXT: DOWNLOAD
+    X: 1300
+    Y: 320
+    FONT_SIZE: 20
+    FONT_COLOR: 255,0,255
+    SHOW: true
+    BACKGROUND_IMAGE: background.png
+STATS:
+  CPU:
+    PERCENTAGE:
+      INTERVAL: 1
+      RADIAL:
+        SHOW: true
+        X: 130
+        Y: 140
+        RADIUS: 50
+        WIDTH: 10
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      TEXT:
+        SHOW: true
+        X: 105
+        Y: 125
+        FONT_SIZE: 30
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      INTERVAL: 1
+      LINE_GRAPH:
+        SHOW: true
+        X: 230
+        Y: 130
+        WIDTH: 220
+        HEIGHT: 60
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 0,0,0
+        HISTORY_SIZE: 100
+        MIN_VALUE: 30
+        MAX_VALUE: 95
+        BACKGROUND_IMAGE: background.png
+      TEXT:
+        SHOW: true
+        X: 230
+        Y: 130
+        FONT_SIZE: 26
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+  GPU:
+    PERCENTAGE:
+      INTERVAL: 1
+      RADIAL:
+        SHOW: true
+        X: 630
+        Y: 140
+        RADIUS: 50
+        WIDTH: 10
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      TEXT:
+        SHOW: true
+        X: 605
+        Y: 125
+        FONT_SIZE: 30
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      INTERVAL: 1
+      LINE_GRAPH:
+        SHOW: true
+        X: 730
+        Y: 130
+        WIDTH: 220
+        HEIGHT: 60
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 0,0,0
+        HISTORY_SIZE: 100
+        MIN_VALUE: 30
+        MAX_VALUE: 90
+        BACKGROUND_IMAGE: background.png
+      TEXT:
+        SHOW: true
+        X: 730
+        Y: 130
+        FONT_SIZE: 26
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    USED_MEMORY:
+      INTERVAL: 1
+      GRAPH:
+        SHOW: true
+        X: 560
+        Y: 240
+        WIDTH: 400
+        HEIGHT: 30
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      PERCENT_TEXT:
+        SHOW: true
+        X: 560
+        Y: 275
+        FONT_SIZE: 26
+        FONT_COLOR: 255,255,255
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+  MEMORY:
+    VIRTUAL:
+      INTERVAL: 1
+      RADIAL:
+        SHOW: true
+        X: 1130
+        Y: 150
+        RADIUS: 60
+        WIDTH: 12
+        COLOR: 255,0,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      PERCENT_TEXT:
+        SHOW: true
+        X: 1105
+        Y: 135
+        FONT_SIZE: 30
+        FONT_COLOR: 255,255,255
+        BACKGROUND_IMAGE: background.png
+  NET:
+    INTERVAL: 1
+    WLO:
+      UPLOAD:
+        LINE_GRAPH:
+          SHOW: true
+          X: 1050
+          Y: 250
+          WIDTH: 400
+          HEIGHT: 60
+          COLOR: 255,0,255
+          BACKGROUND_COLOR: 0,0,0
+          HISTORY_SIZE: 100
+          DYNAMIC_MAX_VALUE: true
+          BACKGROUND_IMAGE: background.png
+        TEXT:
+          SHOW: true
+          X: 1050
+          Y: 265
+          FONT_SIZE: 24
+          FONT_COLOR: 255,255,255
+          SHOW_UNIT: true
+          BACKGROUND_IMAGE: background.png
+        BACKGROUND_IMAGE: background.png
+      DOWNLOAD:
+        LINE_GRAPH:
+          SHOW: true
+          X: 1050
+          Y: 350
+          WIDTH: 400
+          HEIGHT: 60
+          COLOR: 255,0,255
+          BACKGROUND_COLOR: 0,0,0
+          HISTORY_SIZE: 100
+          DYNAMIC_MAX_VALUE: true
+          BACKGROUND_IMAGE: background.png
+        TEXT:
+          SHOW: true
+          X: 1050
+          Y: 365
+          FONT_SIZE: 24
+          FONT_COLOR: 255,255,255
+          SHOW_UNIT: true
+          BACKGROUND_IMAGE: background.png
+        BACKGROUND_IMAGE: background.png
+  CUSTOM:
+    INTERVAL: 1
+    GpuPowerData:
+      TEXT:
+        SHOW: true
+        X: 560
+        Y: 350
+        FONT_SIZE: 42
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuPowerData:
+      TEXT:
+        SHOW: true
+        X: 300
+        Y: 350
+        FONT_SIZE: 42
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread0Data:
+      GRAPH:
+        SHOW: true
+        X: 70
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread1Data:
+      GRAPH:
+        SHOW: true
+        X: 115
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread2Data:
+      GRAPH:
+        SHOW: true
+        X: 160
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread3Data:
+      GRAPH:
+        SHOW: true
+        X: 205
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread4Data:
+      GRAPH:
+        SHOW: true
+        X: 250
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread5Data:
+      GRAPH:
+        SHOW: true
+        X: 295
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread6Data:
+      GRAPH:
+        SHOW: true
+        X: 340
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread7Data:
+      GRAPH:
+        SHOW: true
+        X: 385
+        Y: 255
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread8Data:
+      GRAPH:
+        SHOW: true
+        X: 70
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread9Data:
+      GRAPH:
+        SHOW: true
+        X: 115
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread10Data:
+      GRAPH:
+        SHOW: true
+        X: 160
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread11Data:
+      GRAPH:
+        SHOW: true
+        X: 205
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread12Data:
+      GRAPH:
+        SHOW: true
+        X: 250
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread13Data:
+      GRAPH:
+        SHOW: true
+        X: 295
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread14Data:
+      GRAPH:
+        SHOW: true
+        X: 340
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread15Data:
+      GRAPH:
+        SHOW: true
+        X: 385
+        Y: 300
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread16Data:
+      GRAPH:
+        SHOW: true
+        X: 70
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread17Data:
+      GRAPH:
+        SHOW: true
+        X: 115
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread18Data:
+      GRAPH:
+        SHOW: true
+        X: 160
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread19Data:
+      GRAPH:
+        SHOW: true
+        X: 205
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread20Data:
+      GRAPH:
+        SHOW: true
+        X: 250
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread21Data:
+      GRAPH:
+        SHOW: true
+        X: 295
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread22Data:
+      GRAPH:
+        SHOW: true
+        X: 340
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread23Data:
+      GRAPH:
+        SHOW: true
+        X: 385
+        Y: 345
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread24Data:
+      GRAPH:
+        SHOW: true
+        X: 70
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread25Data:
+      GRAPH:
+        SHOW: true
+        X: 115
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread26Data:
+      GRAPH:
+        SHOW: true
+        X: 160
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread27Data:
+      GRAPH:
+        SHOW: true
+        X: 205
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread28Data:
+      GRAPH:
+        SHOW: true
+        X: 250
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread29Data:
+      GRAPH:
+        SHOW: true
+        X: 295
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread30Data:
+      GRAPH:
+        SHOW: true
+        X: 340
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    CpuThread31Data:
+      GRAPH:
+        SHOW: true
+        X: 385
+        Y: 390
+        WIDTH: 35
+        HEIGHT: 35
+        COLOR: 0,255,255
+        BACKGROUND_COLOR: 20,30,40
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanCpuData:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 80
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanPumpData:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 108
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanSys1Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 136
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanSys2Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 164
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanSys3Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 192
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    FanSys6Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 220
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    SysTempData:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 248
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 65
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    VrmTempData:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 276
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 90
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    Ram1Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 304
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 60
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    Ram2Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 332
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 60
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    Nvme1Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 360
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 70
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    Nvme2Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 388
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 70
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png
+    Nvme3Data:
+      TEXT:
+        SHOW: true
+        X: 1700
+        Y: 416
+        FONT_SIZE: 24
+        FONT_COLOR: 255,255,255
+        SHOW_UNIT: true
+        CRITICAL_VALUE: 70
+        CRITICAL_COLOR: 255,0,0
+        BACKGROUND_IMAGE: background.png
+      BACKGROUND_IMAGE: background.png

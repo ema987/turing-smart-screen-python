@@ -821,6 +821,15 @@ class Custom:
                 # Display text
                 theme_data = config.THEME_DATA['STATS']['CUSTOM'][custom_stat].get("TEXT", None)
                 if theme_data is not None and string_value is not None:
+                    # Dynamic color logic based on critical values
+                    if "CRITICAL_VALUE" in theme_data and numeric_value is not None and not math.isnan(numeric_value):
+                        if "ORIGINAL_FONT_COLOR" not in theme_data:
+                            theme_data["ORIGINAL_FONT_COLOR"] = theme_data.get("FONT_COLOR", "255,255,255")
+                        if numeric_value >= theme_data.get("CRITICAL_VALUE", 85):
+                            theme_data["FONT_COLOR"] = theme_data.get("CRITICAL_COLOR", "255,0,0")
+                        else:
+                            theme_data["FONT_COLOR"] = theme_data["ORIGINAL_FONT_COLOR"]
+                    
                     display_themed_value(theme_data=theme_data, value=string_value)
 
                 # Display graph from numeric value

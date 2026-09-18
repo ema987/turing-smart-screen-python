@@ -163,3 +163,62 @@ Nvme1Data = _create_sensor_class("Nvme1Data", lambda d: d["nvme-pci-0500"]["Comp
 Nvme2Data = _create_sensor_class("Nvme2Data", lambda d: d["nvme-pci-0200"]["Composite"]["temp1_input"], "{:>.0f}°C")
 Nvme3Data = _create_sensor_class("Nvme3Data", lambda d: d["nvme-pci-0b00"]["Composite"]["temp1_input"], "{:>.0f}°C")
 
+
+import psutil
+
+# GPU Power Data
+def _fetch_gpu_power(d):
+    try:
+        import subprocess
+        output = subprocess.check_output(['nvidia-smi', '--query-gpu=power.draw', '--format=csv,noheader,nounits'], text=True)
+        return float(output.strip())
+    except:
+        return 0.0
+
+GpuPowerData = _create_sensor_class("GpuPowerData", _fetch_gpu_power, "{:>.0f}W")
+
+# CPU Thread Data
+_cpu_percent_cache = []
+_cpu_percent_cache_time = 0
+
+def _get_cpu_percent(thread_id):
+    global _cpu_percent_cache, _cpu_percent_cache_time
+    import time
+    if time.time() - _cpu_percent_cache_time > 1:
+        _cpu_percent_cache = psutil.cpu_percent(percpu=True)
+        _cpu_percent_cache_time = time.time()
+    if thread_id < len(_cpu_percent_cache):
+        return _cpu_percent_cache[thread_id]
+    return 0.0
+
+for i in range(32):
+    globals()[f'CpuThread{i}Data'] = _create_sensor_class(f'CpuThread{i}Data', lambda d, tid=i: _get_cpu_percent(tid), "{:>.0f}%")
+
+
+# CPU Power Data
+_cpu_power_cache_time = 0
+_cpu_power_cache_energy = 0
+_cpu_power_cache_watts = 0.0
+
+def _fetch_cpu_power(d):
+    global _cpu_power_cache_time, _cpu_power_cache_energy, _cpu_power_cache_watts
+    import time
+    try:
+        current_energy = d["zenergy-isa-0000"]["Esocket0"]["energy17_input"]
+        current_time = time.time()
+        
+        if _cpu_power_cache_time > 0 and current_energy >= _cpu_power_cache_energy:
+            time_delta = current_time - _cpu_power_cache_time
+            if time_delta > 0:
+                # energy in Joules, power = J / s = W
+                watts = (current_energy - _cpu_power_cache_energy) / time_delta
+                _cpu_power_cache_watts = watts
+                
+        _cpu_power_cache_energy = current_energy
+        _cpu_power_cache_time = current_time
+        return _cpu_power_cache_watts
+    except:
+        return 0.0
+
+CpuPowerData = _create_sensor_class("CpuPowerData", _fetch_cpu_power, "{:>.0f}W")
+
