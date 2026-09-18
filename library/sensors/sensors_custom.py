@@ -99,3 +99,67 @@ class ExampleCustomTextOnlyData(CustomDataSource):
     def last_values(self) -> List[float]:
         # If a custom data class only has text values, it won't be possible to display line graph
         pass
+
+import subprocess
+import json
+import time
+
+_sensors_cache = {}
+_sensors_cache_time = 0
+
+def _get_sensors_data():
+    global _sensors_cache, _sensors_cache_time
+    # Cache for 1 second to avoid spawning too many processes
+    if time.time() - _sensors_cache_time > 1:
+        try:
+            output = subprocess.check_output(['sensors', '-j'], text=True)
+            _sensors_cache = json.loads(output)
+            _sensors_cache_time = time.time()
+        except Exception:
+            _sensors_cache = {}
+    return _sensors_cache
+
+def _create_sensor_class(name, fetch_func, format_str="{:>.0f}"):
+    class DynamicSensor(CustomDataSource):
+        last_val = [math.nan] * 10
+        def as_numeric(self) -> float:
+            try:
+                self.value = fetch_func(_get_sensors_data())
+            except:
+                self.value = math.nan
+            self.last_val.append(self.value)
+            self.last_val.pop(0)
+            return self.value
+        def as_string(self) -> str:
+            if math.isnan(self.value):
+                return "N/A"
+            return format_str.format(self.value)
+        def last_values(self) -> List[float]:
+            return self.last_val
+    DynamicSensor.__name__ = name
+    return DynamicSensor
+
+def _fetch_gpu_load(d):
+    with open("/sys/class/drm/card1/device/gpu_busy_percent", "r") as f:
+        return float(f.read().strip())
+
+GpuLoadData = _create_sensor_class("GpuLoadData", _fetch_gpu_load, "{:>.0f}%")
+GpuTempData = _create_sensor_class("GpuTempData", lambda d: d["amdgpu-pci-7900"]["edge"]["temp1_input"], "{:>.0f}°C")
+
+FanCpuData = _create_sensor_class("FanCpuData", lambda d: d["nct6687-isa-0a20"]["CPU Fan"]["fan1_input"], "{:>.0f} RPM")
+FanPumpData = _create_sensor_class("FanPumpData", lambda d: d["nct6687-isa-0a20"]["Pump Fan"]["fan2_input"], "{:>.0f} RPM")
+FanSys1Data = _create_sensor_class("FanSys1Data", lambda d: d["nct6687-isa-0a20"]["System Fan #1"]["fan3_input"], "{:>.0f} RPM")
+FanSys2Data = _create_sensor_class("FanSys2Data", lambda d: d["nct6687-isa-0a20"]["System Fan #2"]["fan4_input"], "{:>.0f} RPM")
+FanSys3Data = _create_sensor_class("FanSys3Data", lambda d: d["nct6687-isa-0a20"]["System Fan #3"]["fan5_input"], "{:>.0f} RPM")
+FanSys6Data = _create_sensor_class("FanSys6Data", lambda d: d["nct6687-isa-0a20"]["System Fan #6"]["fan8_input"], "{:>.0f} RPM")
+
+SysTempData = _create_sensor_class("SysTempData", lambda d: d["nct6687-isa-0a20"]["System"]["temp2_input"], "{:>.0f}°C")
+VrmTempData = _create_sensor_class("VrmTempData", lambda d: d["nct6687-isa-0a20"]["VRM MOS"]["temp3_input"], "{:>.0f}°C")
+
+Ram1Data = _create_sensor_class("Ram1Data", lambda d: d["spd5118-i2c-13-53"]["temp1"]["temp1_input"], "{:>.0f}°C")
+Ram2Data = _create_sensor_class("Ram2Data", lambda d: d["spd5118-i2c-13-51"]["temp1"]["temp1_input"], "{:>.0f}°C")
+
+Nvme1Data = _create_sensor_class("Nvme1Data", lambda d: d["nvme-pci-0500"]["Composite"]["temp1_input"], "{:>.0f}°C")
+Nvme2Data = _create_sensor_class("Nvme2Data", lambda d: d["nvme-pci-0200"]["Composite"]["temp1_input"], "{:>.0f}°C")
+Nvme3Data = _create_sensor_class("Nvme3Data", lambda d: d["nvme-pci-0b00"]["Composite"]["temp1_input"], "{:>.0f}°C")
+

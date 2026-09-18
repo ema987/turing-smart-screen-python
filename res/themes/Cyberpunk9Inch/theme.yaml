@@ -1,0 +1,350 @@
+---
+author: "Antigravity AI"
+display:
+  DISPLAY_SIZE: 8.8"
+  DISPLAY_ORIENTATION: landscape
+
+static_images:
+  BACKGROUND:
+    PATH: background.png
+    X: 0
+    Y: 0
+    WIDTH: 1920
+    HEIGHT: 480
+
+static_text:
+  # PANEL 1: CPU
+  CPU_LOAD_LBL:
+   TEXT: "LOAD:"
+   X: 60
+   Y: 80
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 30
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  CPU_TEMP_LBL:
+   TEXT: "TEMP:"
+   X: 60
+   Y: 150
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 30
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+
+  # PANEL 2: GPU
+  GPU_LOAD_LBL:
+   TEXT: "LOAD:"
+   X: 535
+   Y: 80
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 30
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  GPU_TEMP_LBL:
+   TEXT: "TEMP:"
+   X: 535
+   Y: 150
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 30
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+
+  # PANEL 3: COOLING
+  FAN_CPU_LBL:
+   TEXT: "CPU FAN:"
+   X: 1010
+   Y: 80
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  FAN_PUMP_LBL:
+   TEXT: "PUMP:"
+   X: 1010
+   Y: 130
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  FAN_SYS1_LBL:
+   TEXT: "SYS FAN 1:"
+   X: 1010
+   Y: 180
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  FAN_SYS2_LBL:
+   TEXT: "SYS FAN 2:"
+   X: 1010
+   Y: 230
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  FAN_SYS3_LBL:
+   TEXT: "SYS FAN 3:"
+   X: 1010
+   Y: 280
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+  FAN_SYS6_LBL:
+   TEXT: "SYS FAN 6:"
+   X: 1010
+   Y: 330
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 28
+   FONT_COLOR: 0, 255, 255
+   BACKGROUND_IMAGE: background.png
+
+  # PANEL 4: MOTHERBOARD & STORAGE
+  SYS_TEMP_LBL:
+   TEXT: "SYSTEM:"
+   X: 1485
+   Y: 80
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  VRM_TEMP_LBL:
+   TEXT: "VRM MOS:"
+   X: 1485
+   Y: 130
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  RAM1_LBL:
+   TEXT: "RAM STICK 1:"
+   X: 1485
+   Y: 180
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  RAM2_LBL:
+   TEXT: "RAM STICK 2:"
+   X: 1485
+   Y: 230
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  NVME1_LBL:
+   TEXT: "NVME 1:"
+   X: 1485
+   Y: 280
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  NVME2_LBL:
+   TEXT: "NVME 2:"
+   X: 1485
+   Y: 330
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+  NVME3_LBL:
+   TEXT: "NVME 3:"
+   X: 1485
+   Y: 380
+   FONT: roboto-mono/RobotoMono-Bold.ttf
+   FONT_SIZE: 25
+   FONT_COLOR: 255, 0, 255
+   BACKGROUND_IMAGE: background.png
+
+STATS:
+  CPU:
+    PERCENTAGE:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 200
+        Y: 75
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 35
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: True
+        X: 60
+        Y: 280
+        WIDTH: 395
+        HEIGHT: 130
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        AUTOSCALE: False
+        LINE_COLOR: 0, 255, 255
+        AXIS: False
+        BACKGROUND_IMAGE: background.png
+    TEMPERATURE:
+      INTERVAL: 1
+      TEXT:
+        SHOW: True
+        SHOW_UNIT: True
+        X: 200
+        Y: 145
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 35
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+
+  CUSTOM:
+    INTERVAL: 1
+    # GPU
+    GpuLoadData:
+      TEXT:
+        SHOW: True
+        X: 675
+        Y: 75
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 35
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+      LINE_GRAPH:
+        SHOW: True
+        X: 535
+        Y: 280
+        WIDTH: 395
+        HEIGHT: 130
+        MIN_VALUE: 0
+        MAX_VALUE: 100
+        AUTOSCALE: False
+        LINE_COLOR: 0, 255, 255
+        AXIS: False
+        BACKGROUND_IMAGE: background.png
+    GpuTempData:
+      TEXT:
+        SHOW: True
+        X: 675
+        Y: 145
+        FONT: roboto-mono/RobotoMono-Bold.ttf
+        FONT_SIZE: 35
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+
+    # COOLING
+    FanCpuData:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 80
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    FanPumpData:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 130
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    FanSys1Data:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 180
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    FanSys2Data:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 230
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    FanSys3Data:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 280
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    FanSys6Data:
+      TEXT:
+        SHOW: True
+        X: 1210
+        Y: 330
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 28
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+
+    # MOTHERBOARD & STORAGE
+    SysTempData:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 80
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    VrmTempData:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 130
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    Ram1Data:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 180
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    Ram2Data:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 230
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    Nvme1Data:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 280
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    Nvme2Data:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 330
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
+    Nvme3Data:
+      TEXT:
+        SHOW: True
+        X: 1720
+        Y: 380
+        FONT: roboto-mono/RobotoMono-Medium.ttf
+        FONT_SIZE: 25
+        FONT_COLOR: 255, 255, 255
+        BACKGROUND_IMAGE: background.png
