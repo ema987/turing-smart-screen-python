@@ -97,6 +97,19 @@ def display_themed_value(theme_data, value, min_size=0, unit=''):
     if value is None:
         return
 
+    if "CRITICAL_VALUE" in theme_data:
+        try:
+            numeric_value = float(value)
+            if not math.isnan(numeric_value):
+                if "ORIGINAL_FONT_COLOR" not in theme_data:
+                    theme_data["ORIGINAL_FONT_COLOR"] = theme_data.get("FONT_COLOR", "255,255,255")
+                if numeric_value >= theme_data.get("CRITICAL_VALUE", 85):
+                    theme_data["FONT_COLOR"] = theme_data.get("CRITICAL_COLOR", "255,0,0")
+                else:
+                    theme_data["FONT_COLOR"] = theme_data["ORIGINAL_FONT_COLOR"]
+        except ValueError:
+            pass
+
     # overridable MIN_SIZE from theme with backward compatibility
     min_size = theme_data.get("MIN_SIZE", min_size)
 
@@ -481,9 +494,9 @@ class Gpu:
 
         display_themed_value(
             theme_data=gpu_mem_used_text_data,
-            value=int(memory_used_mb),
-            min_size=5,
-            unit=" M"
+            value=f"{memory_used_mb / 1024:.1f}",
+            unit=" GB",
+            min_size=5
         )
 
         # GPU mem. total memory (M)
@@ -624,21 +637,21 @@ class Memory:
 
         display_themed_value(
             theme_data=memory_stats_theme_data['VIRTUAL']['USED'],
-            value=int(sensors.Memory.virtual_used() / 1024 ** 2),
+            value=f"{sensors.Memory.virtual_used() / 1024 ** 3:.1f}",
             min_size=5,
-            unit=" M"
+            unit=" GB"
         )
         display_themed_value(
             theme_data=memory_stats_theme_data['VIRTUAL']['FREE'],
-            value=int(sensors.Memory.virtual_free() / 1024 ** 2),
+            value=f"{sensors.Memory.virtual_free() / 1024 ** 3:.1f}",
             min_size=5,
-            unit=" M"
+            unit=" GB"
         )
         display_themed_value(
             theme_data=memory_stats_theme_data['VIRTUAL']['TOTAL'],
-            value=int((sensors.Memory.virtual_free() + sensors.Memory.virtual_used()) / 1024 ** 2),
+            value=f"{(sensors.Memory.virtual_free() + sensors.Memory.virtual_used()) / 1024 ** 3:.1f}",
             min_size=5,
-            unit=" M"
+            unit=" GB"
         )
 
 

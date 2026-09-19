@@ -23,6 +23,7 @@
 
 import math
 import platform
+import subprocess
 import sys
 from collections import namedtuple
 from enum import IntEnum, auto
@@ -300,8 +301,11 @@ class GpuNvidia(sensors.Gpu):
 
     @staticmethod
     def frequency() -> float:
-        # Not supported by Python libraries
-        return math.nan
+        try:
+            output = subprocess.check_output(["nvidia-smi", "--query-gpu=clocks.gr", "--format=csv,noheader,nounits"], stderr=subprocess.STDOUT)
+            return float(output.decode('utf-8').strip())
+        except:
+            return math.nan
 
     @staticmethod
     def is_available() -> bool:
