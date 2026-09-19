@@ -31,14 +31,31 @@ def get_sys_names():
     return cpu, gpu
 
 def create_background(out_dir):
-    img = Image.new('RGB', (WIDTH, HEIGHT), color=BG_COLOR)
-    draw = ImageDraw.Draw(img)
+    # Try to load the cyberpunk background
+    bg_path = "source_bg_cyberpunk.png"  # set this to your source background image (relative to repo root)
     
-    # Grid lines
-    for x in range(0, WIDTH, 20):
-        draw.line([(x, 0), (x, HEIGHT)], fill=GRID, width=1)
-    for y in range(0, HEIGHT, 20):
-        draw.line([(0, y), (WIDTH, y)], fill=GRID, width=1)
+    try:
+        base_img = Image.open(bg_path).convert('RGBA')
+        # Crop the center to fit 1920x480
+        w, h = base_img.size
+        # scale to width=1920 first
+        target_w = WIDTH
+        target_h = int(h * (WIDTH / w))
+        base_img = base_img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+        
+        # Now crop the bottom-center to get the cityscape
+        top = target_h - HEIGHT - 200 # slightly above bottom
+        top = max(0, top)
+        base_img = base_img.crop((0, top, WIDTH, top + HEIGHT))
+        
+        # Don't add a global overlay so the neon pops!
+        img = base_img
+        
+    except Exception as e:
+        print(f"Could not load wallpaper: {e}. Falling back to solid color.")
+        img = Image.new('RGBA', (WIDTH, HEIGHT), color=BG_COLOR)
+
+    draw = ImageDraw.Draw(img, 'RGBA')
         
     try:
         font_l = ImageFont.truetype("res/fonts/roboto-mono/RobotoMono-Bold.ttf", 35)
@@ -53,14 +70,23 @@ def create_background(out_dir):
         ("TEMPERATURES", 1446, AMBER)
     ]
     
+    # Create a separate layer to draw transparent shapes correctly
+    ui_overlay = Image.new('RGBA', (WIDTH, HEIGHT), (0, 0, 0, 0))
+    ui_draw = ImageDraw.Draw(ui_overlay)
+    
     for title, px, color in sections:
         pw = 450
-        draw.rectangle([px, 20, px + pw, HEIGHT - 20], outline=color, width=2)
-        draw.rectangle([px, 20, px + pw, 70], fill=color)
-        draw.text((px + 20, 25), title, fill=BG_COLOR, font=font_l)
+        # Draw translucent black rectangle for the pane body
+        ui_draw.rectangle([px, 20, px + pw, HEIGHT - 40], fill=(0, 0, 0, 160), outline=color, width=2)
+        # Draw solid color header
+        ui_draw.rectangle([px, 20, px + pw, 70], fill=color)
+        ui_draw.text((px + 20, 25), title, fill=BG_COLOR, font=font_l)
         
+    # Composite the UI over the background
+    img = Image.alpha_composite(img, ui_overlay)
+    
     os.makedirs(out_dir, exist_ok=True)
-    img.save(os.path.join(out_dir, "background.png"))
+    img.convert('RGB').save(os.path.join(out_dir, "background.png"))
     print("Background image generated.")
 
 def add_bg(d):
